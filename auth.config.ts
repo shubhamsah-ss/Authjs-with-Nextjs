@@ -39,8 +39,13 @@ export default {
                     const passwordMatched = await compare(password, user.password)
 
                     if (passwordMatched) {
-                        return user;
+                        return {
+                            ...user,
+                            isOAuth: user.isTwoFactorEnabled? true : false
+                        }
                     }
+
+
                 }
                 return null;
             }
