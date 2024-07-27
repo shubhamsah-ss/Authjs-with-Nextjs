@@ -22,12 +22,6 @@ const SettingsPage = () => {
 
     const {status} = useSession()
 
-    if(status === "loading") return <p>Loading...</p>
-    if(status === "unauthenticated") {
-        window.location.reload()
-        return <p>Server error reloading...</p>
-    }
-
     const user = useCurrentUser()
 
     const [isPending, startTransition] = useTransition()
@@ -63,6 +57,12 @@ const SettingsPage = () => {
                     }
                 })
         })
+    }
+
+    if(status === "loading") return <p>Loading...</p>
+    if(status === "unauthenticated") {
+        window.location.reload()
+        return <p>Server error reloading...</p>
     }
 
     return (
